@@ -70,9 +70,8 @@ TOKEN AnaLex(FILE *fd)
             else if (caracter == '/')
             {
                 estado = 7;
-                t.cat = SN;
-                t.codigo = DIVISAO;
-                return t;
+                lexema[tamL] = caracter;
+                lexema[++tamL] = '\0';
             }
             else if (caracter == '=')
             {
@@ -250,6 +249,38 @@ TOKEN AnaLex(FILE *fd)
                 t.cat = CT_F;
                 t.valFloat = atof(digitos);
                 return t;
+            }
+        case 7:
+            if (caracter == '*')
+            {
+                estado = 8;
+            }
+            else
+            {
+                ungetc(caracter, fd);
+                t.cat = SN;
+                t.codigo = DIVISAO;
+                return t;
+            }
+            break;
+        case 8:
+            if (caracter == '*')
+            {
+                estado = 9;
+            }
+            else
+            {
+                estado = 8;
+            }
+            break;
+        case 9:
+            if (caracter == '/')
+            {
+                estado = 0;
+            }
+            else
+            {
+                estado = 8;
             }
             break;
         case 12:
