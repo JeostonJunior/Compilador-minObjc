@@ -41,7 +41,7 @@ enum SINAIS
     MULTIPLICACAO,
     DIVISAO,
     MODIFICADOR,
-    IGUALDADE,
+    COMPARACAO,
     DESIGUALDADE,
     MAIOR_QUE,
     MENOR_QUE,
@@ -56,10 +56,12 @@ enum SINAIS
     FECHA_PARENTESES,
     OU_LOGICO,
     E_LOGICO,
-    ASPAS_SIMPLES,
-    ASPAS_DUPLAS,
     PONTO,
-    AMPERSAND
+    AMPERSAND,
+    TIL,
+    NOT,
+    CIRCUNFLEXO,
+    NAMESPACE
 };
 
 typedef struct
@@ -72,8 +74,7 @@ typedef struct
         char lexema[TAM_MAX_LEXEMA];
         int valInt;
         float valFloat;
-        char caracter;
+        char caracter[1];
     };
 } TOKEN;
-
 #endif
