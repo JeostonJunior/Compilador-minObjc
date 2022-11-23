@@ -12,11 +12,26 @@ extern enum BOOL mostraArvore;
 extern char TABS[200];
 
 /* Assinaturas das funcoes */
+void Prog();
+void ObjDef();
+void DataSec();
+void MethSec();
+void DeclListVar();
+void Decl();
+void DeclVar();
+void Tipo();
+void TiposParam();
+void Func();
+void FuncProt();
+void Escopo();
+void Cmd();
 void Atrib();
 void Expr();
+void ExprSimp();
 void Termo();
-void Resto();
-void Sobra();
 void Fator();
+void OpRel();
+
+enum BOOL verificaTipo();
 
 #endif // ANASINT

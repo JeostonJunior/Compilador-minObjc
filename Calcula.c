@@ -102,14 +102,14 @@ void TestaAnalex() {
       case COMPARACAO:
         printf("<SN, COMPARACAO> ");
         break;
-      case DESIGUALDADE:
-        printf("<SN, DESIGUALDADE> ");
+      case NAO_IGUAL:
+        printf("<SN, NAO_IGUAL> ");
         break;
-      case MAIOR_QUE:
-        printf("<SN, MAIOR_QUE> ");
+      case MAIOR:
+        printf("<SN, MAIOR> ");
         break;
-      case MENOR_QUE:
-        printf("<SN, MENOR_QUE> ");
+      case MENOR:
+        printf("<SN, MENOR> ");
         break;
       case MENOR_IGUAL:
         printf("<SN, MENOR_IGUAL> ");
@@ -117,47 +117,47 @@ void TestaAnalex() {
       case MAIOR_IGUAL:
         printf("<SN, MAIOR_IGUAL> ");
         break;
-      case PONTO_VIRGULA:
-        printf("<SN, PONTO_VIRGULA> ");
+      case PONTO_VIRG:
+        printf("<SN, PONTO_VIRG> ");
         break;
-      case ABRE_CHAVES:
-        printf("<SN, ABRE_CHAVES> ");
+      case A_CHAVE:
+        printf("<SN, A_CHAVE> ");
         break;
-      case FECHA_CHAVES:
-        printf("<SN, FECHA_CHAVES> ");
+      case F_CHAVE:
+        printf("<SN, F_CHAVE> ");
         break;
-      case ABRE_COLCHETES:
-        printf("<SN, ABRE_COLCHETES> ");
+      case A_COLCHETE:
+        printf("<SN, A_COLCHETES> ");
         break;
-      case FECHA_COLCHETES:
-        printf("<SN, FECHA_COLCHETES> ");
+      case F_COLCHETE:
+        printf("<SN, F_COLCHETE> ");
         break;
-      case ABRE_PARENTESES:
-        printf("<SN,  ABRE_PARENTESES> ");
+      case A_PARENTESE:
+        printf("<SN,  A_PARENTESE> ");
         break;
-      case FECHA_PARENTESES:
-        printf("<SN, FECHA_PARENTESES> ");
+      case F_PARENTESE:
+        printf("<SN, F_PARENTESE> ");
         break;
-      case OU_LOGICO:
-        printf("<SN, OU_LOGICO> ");
+      case OU:
+        printf("<SN, OU> ");
         break;
-      case E_LOGICO:
-        printf("<SN, E_LOGICO> ");
+      case AND:
+        printf("<SN, AND> ");
         break;
-      case AMPERSAND:
-        printf("<SN,  AMPERSAND> ");
+      case ENDERECO:
+        printf("<SN,  ENDERECO> ");
         break;
       case PONTO:
         printf("<SN, PONTO> ");
         break;
-      case NOT:
-        printf("<SN, NOT> ");
+      case NAO:
+        printf("<SN, NAO> ");
         break;
-      case TIL:
-        printf("<SN, TIL> ");
+      case DESTRUCTO:
+        printf("<SN, DESTRUCTO> ");
         break;
-      case CIRCUNFLEXO:
-        printf("<SN, CIRCUNFLEXO> ");
+      case IDENTIF_PONTEIRO:
+        printf("<SN, IDENTIF_PONTEIRO> ");
         break;
       case NAMESPACE:
         printf("<SN, NAMESPACE> ");
@@ -168,7 +168,7 @@ void TestaAnalex() {
       printf("<CT_I, %d> ", t.valInt);
       break;
     case CT_C:
-      printf("<CT_C, %s> ", t.caracter);
+      printf("<CT_C, %c> ", t.caracter);
       break;
     case CT_S:
       printf("<CT_S, %s> ", t.lexema);
@@ -189,7 +189,7 @@ void TestaAnasint() {
   if ((fd = fopen("expressao.dat", "r")) == NULL)
     erro("Arquivo de entrada da expressao nao encontrado!");
 
-  Atrib();
+  Prog();
 
   if (t.cat == FIM_ARQ)
     printf("Resultado> Expressao OK!\n");
@@ -215,11 +215,11 @@ void TestaAnasint() {
       case ATRIBUICAO:
         printf("<SN, ATRIBUICAO> ");
         break;
-      case ABRE_PARENTESES:
-        printf("<SN, ABRE_PARENTESES> ");
+      case A_PARENTESE:
+        printf("<SN, A_PARENTESES> ");
         break;
-      case FECHA_PARENTESES:
-        printf("<SN, FECHA_PARENTESES> ");
+      case F_PARENTESE:
+        printf("<SN, F_PARENTESES> ");
         break;
       }
       break;

@@ -1,15 +1,28 @@
-#ifndef _ANALEX_
-#define _ANALEX_
+#ifndef ANALEX
 
+#define ANALEX
 #include <stdio.h>
 #define TAM_MAX_LEXEMA 31
 
-enum TOKEN_CAT { ID = 1, PR, SN, CT_I, CT_F, CT_C, CT_S, FIM_ARQ };
+enum TOKEN_CAT
+{
+  ID = 1,
+  PR,
+  SN,
+  CT_I,
+  CT_F,
+  CT_C,
+  CT_S,
+  FIM_ARQ
+};
 
-enum PAL_RESERV {
+/* Onde: ID: Identificador, PR: Palavra Reservada; SN: Sinal; CT_*: Constante numÃ©rica ou caracter, LT: cadeia de caracter */
+
+enum PAL_RESERV
+{
   CLASS = 1,
-  DATA,
   CODE,
+  DATA,
   INTERN,
   VOID,
   CHAR,
@@ -23,50 +36,72 @@ enum PAL_RESERV {
   RETURN,
   DELETE,
   NEW
-};
+}; // completar com nomes de cÃ³digos correspondentes Ã s palavras reservadas restantes de MinObjC
+
 enum BOOL { FALSE, TRUE };
-enum SINAIS {
-  ATRIBUICAO = 1,
+
+enum SINAIS
+{
+  PONTO_VIRG = 1,
+  DOIS_PONTOS,
+  DIVISAO,
+  ATRIBUICAO,
   ADICAO,
   SUBTRACAO,
   MULTIPLICACAO,
-  DIVISAO,
   MODIFICADOR,
-  COMPARACAO,
-  DESIGUALDADE,
-  MAIOR_QUE,
-  MENOR_QUE,
-  MENOR_IGUAL,
-  MAIOR_IGUAL,
-  PONTO_VIRGULA,
-  ABRE_CHAVES,
-  FECHA_CHAVES,
-  ABRE_COLCHETES,
-  FECHA_COLCHETES,
-  ABRE_PARENTESES,
-  FECHA_PARENTESES,
-  OU_LOGICO,
-  E_LOGICO,
+  A_PARENTESE,
+  F_PARENTESE,
+  A_CHAVE,
+  F_CHAVE,
+  MAIOR,
+  MENOR,
+  A_COLCHETE,
+  F_COLCHETE,
+  AND,
+  NAO,
+  VIRGULA,
+  OU,
+  IDENTIF_PONTEIRO,
+  ASPAS_S,
+  ASPAS_D,
   PONTO,
-  AMPERSAND,
-  TIL,
-  NOT,
-  CIRCUNFLEXO,
+  COMPARACAO,
+  DIFERENCA,
+  MAIOR_IGUAL,
+  MENOR_IGUAL,
+  NAO_IGUAL,
+  ENDERECO,
+  DESTRUCTO,
   NAMESPACE
-};
+}; // completar com nomes de cÃ³digos correspondentes sinais restantes de MinObjC
 
-typedef struct {
-  enum TOKEN_CAT cat;
+typedef
+
+    struct
+{
+
+  enum TOKEN_CAT cat; // deve receber uma das constantes de enum TOKEN_CAT
   enum BOOL processado;
-  union {
-    int codigo;
-    int indice;
-    char lexema[TAM_MAX_LEXEMA];
-    int valInt;
-    float valFloat;
-    char caracter[1];
+
+  union
+  { // parte variÃ¡vel do registro
+
+    int codigo; // para tokens das categorias PR e SN
+
+    int indice; // indica o Ã­ndice da tabela onde o Analex armazenou um literal (cadeia de caracter) para tokens da cat. LT
+
+    char lexema[TAM_MAX_LEXEMA]; // cadeia de caractares que corresponde o nome do token da cat. ID
+
+    int valInt; // valor da constante ineira em tokens da cat. CT_I
+
+    float valFloat; // valor da constante ineira em tokens da cat. CT_F
+
+    char caracter; // caracter do token da cat. CT_C
+
   };
-} TOKEN;
+
+} TOKEN; // Tipo TOKEN
 
 extern TOKEN t;
 extern FILE *fd;
